@@ -1,0 +1,59 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+* {
+    border: 1px solid black;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;    
+}
+
+header > nav#nav-bar > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+a.nav-link {
+    display: block;    
+    text-decoration: none;
+    padding: .5em 1em;
+}
+
+main {
+
+}
+
+@media (min-width: 660px) {
+    header#header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    header > nav#nav-bar {
+        align-self: center;
+    }
+
+    header > nav#nav-bar > ul {
+        display: flex;
+    }
+}
+
+img#header-img {
+    display: block;
+}
