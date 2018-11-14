@@ -30,15 +30,24 @@ h1 {
 }
 
 /*
-  header
-  main
-*/
+ * header
+ * main
+ */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
     margin: 0;
     padding: .5em;
+}
+
+/*
+ * column-1 | column-2
+ */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1; /* flow-grow / flow-shrink / flex-basis = 1/1/0 */
 }
 
 nav#nav-bar > ul {
@@ -53,25 +62,42 @@ a.nav-link {
     padding: .5em 1em;
 }
 
+div#savage-img {
+    height: 360px;
+}
+
 img {
     display: block;
     max-width: 100%;
     height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 header#header {
     flex-shrink: 0; /* don't let the header shrink beyond min size */
 }
 
-main {
-    flex: 1; /* flow-grow / flow-shrink / flex-basis = 1/1/0 */
+section#specs table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
 section#specs tr:nth-child(even) {
     background: #f8f8f8;
 }
 
-@media (min-width: 660px) {
+section#overview,
+section#features {
+    margin-left: 2em;
+}
+
+section#specs {
+    margin-left: 1em;
+}
+
+@media (min-width: 768px) {
     /* 
        logo | nav-links
      */
@@ -89,21 +115,9 @@ section#specs tr:nth-child(even) {
         display: flex;
     }
 
-    /* h1 */
-    section#overview {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    section#overview > h1 {
-        flex-basis: 100%; /* takes up it's own row */
+    .column {
+        width: 50%;
     }
     
-    section#overview > div,
-    section#overview > p {
-        flex-basis: 50%;
-        flex-grow: 1;
-    }
 }
 
