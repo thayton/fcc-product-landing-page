@@ -8,18 +8,35 @@
     box-sizing: inherit;
 }
 
-* {
-    border: 1px solid orange;
+/*
+https://www.webdesignerdepot.com/2013/01/how-to-use-any-font-you-like-with-css3/
+*/
+@font-face{
+    font-family:'United Sans Reg';
+    src:url("fonts/UnitedSansReg-Bold.otf") format("opentype");
 }
 
 html {
-    height: 100%;
+    min-height: 100%;
+    font-family: "Nunito Sans", sans-serif;    
 }
 
+h1,h2,h3,h4,h5 {
+    font-family: "United Sans Reg";
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+/*
+  header
+  main
+*/
 body {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: .5em;
 }
@@ -31,7 +48,7 @@ nav#nav-bar > ul {
 }
 
 a.nav-link {
-    display: block;    
+    display: block;   /* so we can add padding to bottom/top */
     text-decoration: none;
     padding: .5em 1em;
 }
@@ -42,40 +59,50 @@ img {
     height: auto;
 }
 
-header {
-    flex-shrink: 0;
+header#header {
+    flex-shrink: 0; /* don't let the header shrink beyond min size */
 }
 
 main {
-    flex: 1;
+    flex: 1; /* flow-grow / flow-shrink / flex-basis = 1/1/0 */
+}
+
+section#specs tr:nth-child(even) {
+    background: #f8f8f8;
 }
 
 @media (min-width: 660px) {
+    /* 
+       logo | nav-links
+     */
     header#header {
         display: flex;
         justify-content: space-between;
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
     }
 
     nav#nav-bar {
         align-self: center;
     }
 
+    /* li | li | li */
     nav#nav-bar > ul {
         display: flex;
     }
 
-    div#overview {
+    /* h1 */
+    section#overview {
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
-    div#overview > div,
-    div#overview > p {
-        flex-basis: 0;
+    section#overview > h1 {
+        flex-basis: 100%; /* takes up it's own row */
+    }
+    
+    section#overview > div,
+    section#overview > p {
+        flex-basis: 50%;
         flex-grow: 1;
     }
 }
